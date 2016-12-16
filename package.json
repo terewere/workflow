@@ -8,19 +8,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "?.git"
+    "url": "https://github.com/terewere/workflow.git"
   },
   "author": "Shaibu Zachariyya",
   "license": "ISC",
   "devDependencies": {
+    "@aquafadas/gulp-php-minify": "^0.3.1",
     "browser-sync": "^2.18.5",
+    "cssnano": "^3.9.1",
+    "es6-promise": "^4.0.5",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-bower": "0.0.13",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.1",
+    "gulp-filter": "^4.0.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.1.1",
+    "gulp-main-bower-files": "^1.6.0",
     "gulp-minify-html": "^1.0.6",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-rtlcss": "^1.0.0",
     "gulp-sass": "^2.3.2",

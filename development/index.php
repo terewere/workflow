@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css" >
+    <link rel="stylesheet" href="../production/css/bootstrap.min.css" >
     
   </head>
   <body>
@@ -28,6 +28,6 @@
    
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
-  <script src="js/script.js">	</script>
+  <script src="../production/js/script.js">	</script>
   </body>
 </html>
