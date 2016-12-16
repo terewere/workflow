@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="../production/css/bootstrap.min.css" >
     
   </head>
-  <body>
-    <h2>Saalaam, world!</h2>
+  <body >
+    <h2 style="color: red">Saalaam, world!</h2>
     <div class="container">
       <div class="row">
         <div class="col-xs-4">
-           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delecs quos ut incidunt reprehenderit quis modi architecto quas debit ad aut!</p>
+           <p style="color: red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delecs quos ut incidunt reprehenderit quis modi architecto quas debit ad aut!</p>
         </div>
         <div class="col-xs-4">
            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, consequatur, quisquam dolore amet porro esse, voluptatibus quos utio ad aut!</p>
