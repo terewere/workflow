@@ -28,10 +28,10 @@ var env,
  env = process.env.NODE_ENV || 'development'; // Toggle development and production for the appropriate case.
 
  if (env=='development') {
- 	outputDir = 'development/',
+ 	outputDir = 'kheireya/',
  	sassStyle = 'expanded'
  } else {
- 	outputDir = 'production/',
+ 	outputDir = 'kheireya/',
  	sassStyle = 'compressed'
  }
 
@@ -43,7 +43,7 @@ var env,
     var 	fontawesomePath = './bower_components/font-awesome/scss';
     
     var 	config = {
-        	sassPath: './scss',
+        	sassPath:  outputDir + 'sass',
        		bowerDir: './bower_components'
     };
 
@@ -63,6 +63,12 @@ gulp.task('icons', function() {
         .pipe(gulp.dest(outputDir + 'fonts'));
 });
 
+
+// Copy fontawesome icons to public/fonts folder
+gulp.task('jquery', function() {
+    return gulp.src(config.bowerDir + '/jquery/dist/jquery.min.js')
+        .pipe(gulp.dest(outputDir + 'js'));
+});
 
 
 
@@ -85,11 +91,11 @@ gulp.task('sass', function(){
 
 	    .pipe(autoprefixer({browsers:'last 2 versions'}))
 
-		.pipe(gulp.dest('./')) // pointing to the THEME root for WORDPRESS
+		.pipe(gulp.dest(outputDir)) // pointing to the THEME root for WORDPRESS
 
 		.pipe(rtlcss())                     // Convert to RTL
 	    .pipe(rename({ basename: 'rtl' }))  // Rename to rtl.css
-	    .pipe(gulp.dest('./'));             // Output RTL stylesheets (rtl.css)
+	    .pipe(gulp.dest(outputDir));             // Output RTL stylesheets (rtl.css)
 	        
 
          
@@ -101,7 +107,8 @@ gulp.task('sass', function(){
 var jsSource = [
 
 
- 			config.bowerDir +  '/jquery/dist/jquery.js',
+ 			// config.bowerDir +  '/jquery/dist/jquery.js',
+      config.bowerDir +  '/tether/dist/js/tether.js',
  			config.bowerDir + '/bootstrap/js/dist/util.js',
             config.bowerDir + '/bootstrap/js/dist/alert.js',
             config.bowerDir + '/bootstrap/js/dist/button.js',
@@ -117,7 +124,7 @@ var jsSource = [
 
             // my custom javascripts here
 
-            './scripts/_script.js'
+           outputDir + 'src-scripts/_script.js'
 
 
 
@@ -127,8 +134,8 @@ var jsSource = [
 gulp.task('js', function(){
 	  gulp.src(jsSource)
 
-    .pipe(concat('script.js'))
-    .pipe(gulpif(env ==='production',rename({suffix: '.min'})))
+    .pipe(concat('script.min.js'))
+    // .pipe(gulpif(env ==='production',rename({suffix: '.min'})))
 	.pipe(gulpif(env ==='production',uglify()))
     .pipe(gulp.dest(outputDir + 'js'))
     
@@ -139,9 +146,9 @@ gulp.task('js', function(){
 
 //imagemin for optimisation of images
 gulp.task('images', function() {
-  return gulp.src('./images/src/*')
+  return gulp.src(outputDir +'img/src*')
     .pipe(imagemin({optimizationLevel: 7, progressive: true}))
-    .pipe(gulp.dest('./images/dist'));
+    .pipe(gulp.dest(outputDir +'img'));
 });
 
 //watch *php, *scss, *js, *images
@@ -149,11 +156,11 @@ gulp.task('images', function() {
 gulp.task('watch', function() {
  
   browserSync.init({
-   		 files: ['./**/*.php'],
-    	 proxy: 'http://localhost/gulp-test/development/', // to be changed base on the project
+   		 files: [outputDir +'*.php'],
+    	 proxy: 'http://localhost/wp1223206/kheiriya/', // to be changed base on the project [THIS IS FOR KHEIREYA]
   });
 
-  gulp.watch('scss/*.scss',['sass', reload]);
+  gulp.watch(outputDir +'scss/*.scss',['sass', reload]);
   gulp.watch(jsSource, ['js', reload]);
   gulp.watch('images/src/*', ['images']);
  
